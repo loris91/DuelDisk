@@ -1,11 +1,6 @@
 package com.example.dueldisk;
 
-import java.io.IOException;
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -23,6 +18,9 @@ public class MainActivity extends Activity {
 	EditText usernameDX = null;
 	TextView lifePointsDX = null;
 	TextView damage = null;
+	Toast toastReset;
+	Toast toastWinSX;
+	Toast toastWinDX ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +32,14 @@ public class MainActivity extends Activity {
 		this.usernameDX = (EditText) findViewById(R.id.editUsernameDX);
 		this.lifePointsDX = (TextView) findViewById(R.id.textLifepointsDX);
 		this.damage = (TextView) findViewById(R.id.textDamage);
-		final Toast toastReset = Toast.makeText(this, "All data have been reset!", Toast.LENGTH_SHORT);
 		
+		String nameSX = this.usernameSX.getText().toString();
+		String nameDX = this.usernameDX.getText().toString();
+		
+		this.toastReset = Toast.makeText(this, "All data have been reset!", Toast.LENGTH_SHORT);
+		this.toastWinSX = Toast.makeText(this, nameSX + " win the game!" , Toast.LENGTH_SHORT);
+		this.toastWinDX = Toast.makeText(this, nameDX + " win the game!" , Toast.LENGTH_SHORT);
+
 		// Reset button
 		final Button resetButton = (Button) findViewById(R.id.buttonReset);
 		resetButton.setOnClickListener(new View.OnClickListener() {
@@ -250,6 +254,25 @@ public class MainActivity extends Activity {
 		
 		lifePointsView.setText(Integer.toString(lifePointsValue));
 		this.damage.setText("0");
+		endGame();
+		
+	}
+
+	
+	// View the message with the name of winner player
+	private void endGame() {
+		String pointsSX = this.lifePointsSX.getText().toString();
+		String pointsDX = this.lifePointsDX.getText().toString();
+		
+		if (pointsDX.equals("0")) {
+			this.toastWinDX.show();
+			return;
+		}
+		
+		if (pointsSX.equals("0")) {
+			this.toastWinSX.show();
+			return;
+		}
 		
 	}
 
