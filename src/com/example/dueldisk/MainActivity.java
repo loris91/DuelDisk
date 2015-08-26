@@ -18,9 +18,7 @@ public class MainActivity extends Activity {
 	EditText usernameDX = null;
 	TextView lifePointsDX = null;
 	TextView damage = null;
-	Toast toastReset;
-	Toast toastWinSX;
-	Toast toastWinDX ;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +34,8 @@ public class MainActivity extends Activity {
 		String nameSX = this.usernameSX.getText().toString();
 		String nameDX = this.usernameDX.getText().toString();
 		
-		this.toastReset = Toast.makeText(this, "All data have been reset!", Toast.LENGTH_SHORT);
-		this.toastWinSX = Toast.makeText(this, nameSX + " win the game!" , Toast.LENGTH_SHORT);
-		this.toastWinDX = Toast.makeText(this, nameDX + " win the game!" , Toast.LENGTH_SHORT);
-
+		final Toast toastReset = Toast.makeText(this, "All data have been reset!", Toast.LENGTH_SHORT);
+		
 		// Reset button
 		final Button resetButton = (Button) findViewById(R.id.buttonReset);
 		resetButton.setOnClickListener(new View.OnClickListener() {
@@ -265,12 +261,12 @@ public class MainActivity extends Activity {
 		String pointsDX = this.lifePointsDX.getText().toString();
 		
 		if (pointsDX.equals("0")) {
-			this.toastWinDX.show();
+			Toast.makeText(this, this.usernameSX.getText().toString() + " win the game!" , Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
 		if (pointsSX.equals("0")) {
-			this.toastWinSX.show();
+			Toast.makeText(this, this.usernameDX.getText().toString() + " win the game!" , Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
