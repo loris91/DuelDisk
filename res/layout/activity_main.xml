@@ -202,6 +202,7 @@
         android:layout_alignBottom="@+id/editUsernameSX"
         android:layout_alignParentRight="true"
         android:ems="10"
+        android:text="@string/Username"
         android:textColor="@color/white"
         android:textAlignment="gravity" />
 
@@ -226,23 +227,31 @@
         android:layout_alignLeft="@+id/textLifepointsSX"
         android:ems="10"
         android:textColor="@color/white"
+        android:text="@string/Username"
         android:textAlignment="gravity" />
     
-	<ImageView
-        android:id="@+id/imageView1"
+    <ProgressBar
+        android:id="@+id/progressBarSX"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="220px"
         android:layout_height="70px"
         android:layout_above="@+id/editUsernameSX"
         android:layout_alignLeft="@+id/editUsernameSX"
-        android:src="@drawable/life_points" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+        android:indeterminate="false"        
+        android:max="8000"
+        android:progress="8000" />
+    
+    <ProgressBar
+        android:id="@+id/progressBarDX"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="220px"
         android:layout_height="70px"
         android:layout_above="@+id/editUsernameDX"
         android:layout_alignRight="@+id/editUsernameDX"
-        android:src="@drawable/life_points" />
+        android:indeterminate="false"        
+        android:max="8000"
+        android:progress="8000" />
+
 
     <Button
         android:id="@+id/buttonDice"

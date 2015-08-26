@@ -25,6 +25,6 @@
     <string name="Damage">0</string>
     <string name="Dice">Dice: 0</string>
     <string name="Coin">Coint: Head</string>
-    
+    <string name="Username">Username!</string>    
 
 </resources>

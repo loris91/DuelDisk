@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ public class MainActivity extends Activity {
 	EditText usernameDX = null;
 	TextView lifePointsDX = null;
 	TextView damage = null;
+	ProgressBar progressBarDX = null;
+	ProgressBar progressBarSX = null;
 
 
 	@Override
@@ -30,6 +33,8 @@ public class MainActivity extends Activity {
 		this.usernameDX = (EditText) findViewById(R.id.editUsernameDX);
 		this.lifePointsDX = (TextView) findViewById(R.id.textLifepointsDX);
 		this.damage = (TextView) findViewById(R.id.textDamage);
+		this.progressBarSX = (ProgressBar) findViewById(R.id.progressBarSX);
+		this.progressBarDX = (ProgressBar) findViewById(R.id.progressBarDX);
 		
 		String nameSX = this.usernameSX.getText().toString();
 		String nameDX = this.usernameDX.getText().toString();
@@ -250,15 +255,16 @@ public class MainActivity extends Activity {
 		
 		lifePointsView.setText(Integer.toString(lifePointsValue));
 		this.damage.setText("0");
-		endGame();
-		
+		updateBar();
 	}
 
-	
 	// View the message with the name of winner player
-	private void endGame() {
+	private void updateBar() {
 		String pointsSX = this.lifePointsSX.getText().toString();
 		String pointsDX = this.lifePointsDX.getText().toString();
+		
+		this.progressBarDX.setProgress(Integer.parseInt(pointsDX));
+		this.progressBarSX.setProgress(Integer.parseInt(pointsSX));
 		
 		if (pointsDX.equals("0")) {
 			Toast.makeText(this, this.usernameSX.getText().toString() + " win the game!" , Toast.LENGTH_SHORT).show();
